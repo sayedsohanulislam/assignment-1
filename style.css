@@ -1,0 +1,323 @@
+/* --- RESET & VARIABLES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --primary-color: #2D3436;
+    --accent-color: #0984e3;
+    --bg-light: #F8F9FA;
+    --text-dark: #2d3436;
+    --text-grey: #636e72;
+    --border-radius: 8px;
+}
+
+body {
+    line-height: 1.6;
+    color: var(--text-dark);
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- BUTTONS & INTERACTIONS --- */
+.btn {
+    display: inline-block;
+    padding: 10px 24px;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    transition: all 0.3s ease; /* HOVER EFFECT CHALLENGE */
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: white;
+    border: 2px solid var(--accent-color);
+}
+
+.btn-primary:hover {
+    background-color: #076ab7;
+    border-color: #076ab7;
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-outline:hover {
+    background-color: white;
+    color: var(--text-dark);
+    transform: translateY(-2px);
+}
+
+/* --- NAVBAR --- */
+.navbar {
+    padding: 1rem 0;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.nav-menu a:hover {
+    color: var(--accent-color);
+}
+
+/* --- BANNER --- */
+.banner {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://placehold.co/1200x600/2D3436/FFF?text=Banner+Background');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 100px 0;
+}
+
+.tag {
+    background-color: rgba(255,255,255,0.2);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.banner h1 {
+    font-size: 3.5rem;
+    margin: 20px 0;
+    line-height: 1.2;
+}
+
+.hero-text {
+    max-width: 700px;
+    margin: 0 auto 30px;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.banner-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* --- NOTES SECTION --- */
+.notes-section {
+    padding: 80px 0;
+    background-color: white;
+    text-align: center;
+}
+
+.section-header {
+    margin-bottom: 50px;
+}
+
+.section-header h2 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.cards-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.card {
+    flex: 1;
+    min-width: 250px;
+    padding: 30px 20px;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.icon-box {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+/* Icon background colors similar to Figma */
+.icon-red { background-color: #ff7675; color: white; }
+.icon-yellow { background-color: #ffeaa7; color: #d35400; }
+.icon-purple { background-color: #a29bfe; color: white; }
+.icon-blue { background-color: #74b9ff; color: white; }
+
+/* --- SECOND BRAIN SECTION --- */
+.second-brain {
+    padding: 80px 0;
+    background-color: var(--bg-light);
+}
+
+.split-layout {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.left-col, .right-col {
+    flex: 1;
+}
+
+.left-col img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.highlight {
+    color: var(--accent-color);
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.right-col h2 {
+    font-size: 2.5rem;
+    margin: 10px 0 20px;
+    line-height: 1.2;
+}
+
+.feature-list {
+    list-style: none;
+    margin-top: 30px;
+}
+
+.feature-list li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+}
+
+.feature-list li i {
+    color: var(--accent-color);
+}
+
+/* --- EARLY ACCESS / CHALLENGE SECTION --- */
+.early-access {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.box-layout {
+    background-color: #f1f2f6;
+    padding: 60px;
+    border-radius: 20px;
+}
+
+.highlight-message {
+    color: var(--accent-color);
+    font-weight: 600;
+    margin: 20px 0;
+}
+
+.btn-large {
+    padding: 15px 40px;
+    font-size: 1.1rem;
+}
+
+.footer-note {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 0.85rem;
+    color: var(--text-grey);
+}
+
+/* --- FOOTER --- */
+footer {
+    padding: 50px 0 20px;
+    background-color: white;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.socials {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.socials a {
+    color: var(--text-dark);
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+.socials a:hover {
+    color: var(--accent-color);
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+.copyright {
+    text-align: center;
+    color: var(--text-grey);
+    font-size: 0.9rem;
+}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 768px) {
+    .nav-menu { display: none; } /* Simplified for assignment */
+    .banner h1 { font-size: 2.5rem; }
+    .split-layout { flex-direction: column; }
+    .cards-grid { flex-direction: column; }
+}
