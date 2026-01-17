@@ -1,4 +1,3 @@
-/* --- RESET & VARIABLES --- */
 * {
     margin: 0;
     padding: 0;
@@ -9,7 +8,8 @@
 :root {
     --primary-color: #001E3C;
     --accent-color: #27AE60;
-    --bg-light: #F8F9FA;
+    --accent-hover: #219755;
+    --bg-light: #F9FBE7;
     --text-dark: #001E3C;
     --text-grey: #636e72;
     --border-radius: 8px;
@@ -26,14 +26,14 @@ body {
     padding: 0 20px;
 }
 
-/* --- BUTTONS & INTERACTIONS --- */
 .btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     padding: 10px 24px;
     text-decoration: none;
     border-radius: var(--border-radius);
     font-weight: 600;
-    transition: all 0.3s ease; /* HOVER EFFECT CHALLENGE */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     cursor: pointer;
 }
 
@@ -44,9 +44,10 @@ body {
 }
 
 .btn-primary:hover {
-    background-color: #219755;
-    border-color: #219755;
-    transform: translateY(-2px);
+    background-color: var(--accent-hover);
+    border-color: var(--accent-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
 }
 
 .btn-outline {
@@ -58,14 +59,27 @@ body {
 .btn-outline:hover {
     background-color: white;
     color: var(--text-dark);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
 }
 
-/* --- NAVBAR --- */
+.arrow-icon {
+    width: 16px;
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+}
+
+.btn:hover .arrow-icon {
+    transform: translateX(5px);
+}
+
 .navbar {
     padding: 1rem 0;
     background-color: white;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .nav-container {
@@ -75,9 +89,7 @@ body {
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--text-dark);
+    height: 40px;
 }
 
 .nav-menu {
@@ -90,33 +102,48 @@ body {
     text-decoration: none;
     color: var(--text-dark);
     font-weight: 500;
+    transition: color 0.3s ease;
 }
 
 .nav-menu a:hover {
     color: var(--accent-color);
 }
 
-/* --- BANNER --- */
 .banner {
-    background-color: var(--primary-color);
+    background-size: cover;
+    background-position: center;
     color: white;
     text-align: center;
-    padding: 100px 0;
+    padding: 150px 0;
+    background-color: var(--primary-color);
 }
 
 .tag {
     background-color: var(--accent-color);
-    padding: 5px 15px;
-    border-radius: 20px;
+    padding: 8px 20px;
+    border-radius: 50px;
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: white;
+    display: inline-block;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    cursor: default;
+    border: 1px solid transparent;
+}
+
+.tag:hover {
+    background-color: white;
+    color: var(--accent-color);
+    transform: scale(1.05);
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(39, 174, 96, 0.6);
 }
 
 .banner h1 {
-    font-size: 3.5rem;
-    margin: 20px 0;
+    font-size: 3rem;
+    margin-bottom: 20px;
     line-height: 1.2;
 }
 
@@ -133,7 +160,6 @@ body {
     gap: 15px;
 }
 
-/* --- NOTES SECTION --- */
 .notes-section {
     padding: 80px 0;
     background-color: white;
@@ -163,12 +189,13 @@ body {
     border: 1px solid #eee;
     border-radius: 12px;
     text-align: center;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+    border-color: var(--accent-color);
 }
 
 .icon-box {
@@ -179,21 +206,22 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: white;
 }
 
-/* Icon background colors similar to Figma */
+.icon-box img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
 .icon-red { background-color: #FF5252; }
 .icon-yellow { background-color: #FFA000; }
 .icon-purple { background-color: #E040FB; }
 .icon-blue { background-color: #40C4FF; }
 
-/* --- SECOND BRAIN SECTION --- */
 .second-brain {
     padding: 80px 0;
-    background-color: var(--bg-light);
+    background-color: white;
 }
 
 .split-layout {
@@ -206,16 +234,17 @@ body {
     flex: 1;
 }
 
-.brain-placeholder {
+.left-col img {
     width: 100%;
-    height: 300px;
-    background-color: #f0f0f0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: auto;
     border-radius: 12px;
-    font-size: 1.2rem;
-    color: #666;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.left-col img:hover {
+    transform: scale(1.02);
 }
 
 .highlight {
@@ -223,40 +252,69 @@ body {
     font-weight: 700;
     font-size: 0.9rem;
     letter-spacing: 1px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 10px;
 }
 
 .right-col h2 {
     font-size: 2.5rem;
-    margin: 10px 0 20px;
+    margin-bottom: 20px;
     line-height: 1.2;
+    color: var(--primary-color);
+}
+
+.desc {
+    font-size: 1.1rem;
+    color: var(--text-grey);
+    margin-bottom: 30px;
 }
 
 .feature-list {
     list-style: none;
-    margin-top: 30px;
 }
 
 .feature-list li {
     margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
     font-weight: 500;
+    color: var(--text-dark);
+    font-size: 1.05rem;
 }
 
-/* --- EARLY ACCESS / CHALLENGE SECTION --- */
+.check-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
 .early-access {
     padding: 80px 0;
     text-align: center;
 }
 
 .box-layout {
-    background-color: #F9FBE7;
-    padding: 60px;
+    background-color: var(--bg-light);
+    padding: 80px 40px;
     border-radius: 20px;
+    transition: transform 0.3s ease;
+}
+
+.box-layout:hover {
+    transform: translateY(-5px);
+}
+
+.box-layout h2 {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
 }
 
 .highlight-message {
     color: var(--text-dark);
     font-weight: 600;
-    margin: 20px 0;
+    margin: 20px 0 30px;
 }
 
 .btn-large {
@@ -265,7 +323,7 @@ body {
 }
 
 .footer-note {
-    margin-top: 20px;
+    margin-top: 25px;
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -273,9 +331,8 @@ body {
     color: var(--text-grey);
 }
 
-/* --- FOOTER --- */
 footer {
-    padding: 50px 0 20px;
+    padding: 60px 0 20px;
     background-color: var(--primary-color);
     color: white;
 }
@@ -284,7 +341,7 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 .socials {
@@ -295,44 +352,66 @@ footer {
 
 .socials span {
     font-size: 1rem;
+    margin-right: 10px;
 }
 
 .social-icon {
-    width: 30px;
-    height: 30px;
-    background-color: white;
-    color: var(--primary-color);
+    width: 36px;
+    height: 36px;
+    background-color: rgba(255,255,255,0.1);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    font-weight: bold;
-    font-size: 1rem;
-    transition: background-color 0.3s;
-    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.social-icon svg {
+    width: 18px;
+    height: 18px;
+    fill: white;
+    transition: transform 0.3s ease;
 }
 
 .social-icon:hover {
-    background-color: #f0f0f0;
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.social-icon:hover svg {
+    transform: scale(1.1);
 }
 
 hr {
     border: 0;
-    border-top: 1px solid rgba(255,255,255,0.2);
+    border-top: 1px solid rgba(255,255,255,0.1);
     margin-bottom: 20px;
 }
 
 .copyright {
     text-align: center;
     font-size: 0.9rem;
-    opacity: 0.8;
+    opacity: 0.6;
 }
 
-/* --- RESPONSIVE ADJUSTMENTS --- */
 @media (max-width: 768px) {
-    .nav-menu { display: none; } /* Simplified for assignment */
-    .banner h1 { font-size: 2.5rem; }
+    .nav-menu { display: none; }
+    
+    .banner { padding: 100px 0; }
+    .banner h1 { font-size: 2.2rem; }
+    .banner-buttons { flex-direction: column; }
+    
+    .section-header h2 { font-size: 1.8rem; }
+    
     .split-layout { flex-direction: column; }
+    .left-col { margin-bottom: 40px; width: 100%; }
+    .right-col h2 { font-size: 2rem; }
+    
     .cards-grid { flex-direction: column; }
+    
+    .box-layout { padding: 40px 20px; }
+    
+    .footer-content { flex-direction: column; gap: 20px; }
 }
